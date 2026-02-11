@@ -33,7 +33,15 @@ let fibFast n =
       in aux n 0 1
 
 let sinappx (n: int) (x : float) : float =
-  raise Util.Unimplemented
+  let rec aux i curr acc =
+    if i > n then acc
+    else
+      let next_i = float_of_int (2*i) in
+      let multiplier = -. (x *. x) /. (next_i *. (next_i +. 1.)) in
+      let next = curr *. multiplier in
+      aux (i + 1) next (acc +. next)
+  in if n < 0 then 0.
+  else aux 1 x x
 
 let rec repeat (c: char) (n: int) : char list =
   raise Util.Unimplemented
