@@ -78,3 +78,28 @@ let () =
   
   assert (sumsq 0 = 0);
   assert (sumsq 5 = 55);
+
+  assert (sumOdd 1 = 1);
+  assert (sumOdd 5 = 9);
+
+  assert (fibFast 0 = 0);
+  assert (fibFast 1 = 1);
+  assert (fibFast 10 = 55);
+
+  Printf.printf "sinappx(n=1, x=0) should be 0, and yields %f\n" (sinappx 1 0.);
+  Printf.printf "sinappx(n=0, x=3) should be 3, and yields %f\n" (sinappx 0 3.);
+  Printf.printf "sinappx(n=10, x=pi/6) should be 0.5, and yields %f\n" (sinappx 10 (Float.pi /. 6.));
+  Printf.printf "sinappx(n=10, x=-pi/6) should be -0.5, and yields %f\n" (sinappx 10 (Float.pi /. 6.) *. -1.);
+  Printf.printf "sinappx(n=10, x=pi) should be 0, and yields %f\n" (sinappx 10 (Float.pi));
+
+  assert (repeat 'a' 0 = []);
+  assert (repeat 'b' 5 = ['b';'b';'b';'b';'b']);
+
+  assert (run_length_encode [] = []);
+  assert (run_length_encode ['a'; 'a'; 'a'; 'a'; 'a'; 'b'; 'b'; 'b'] = [('a', 5); ('b', 3)]);
+  assert (run_length_encode ['a'; 'a'; 'b'; 'b'; 'b'; 'a'] = [('a', 2); ('b', 3); ('a', 1)]);
+
+  assert (run_length_decode [] = []);
+  assert (run_length_decode [('a', 5); ('b', 3)] = ['a'; 'a'; 'a'; 'a'; 'a'; 'b'; 'b'; 'b']);
+
+
