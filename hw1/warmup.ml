@@ -23,14 +23,12 @@ let rec fib (n: int) : int =
   else fib (n - 1) + fib (n - 2)
 
 let fibFast n =
-  match n with
-  | _ when n < 1 -> 0
-  | 1 -> 1
-  | _ ->
-      let rec aux n a b =
-        if n = 0 then a
-        else aux (n-1) b (a+b)
-      in aux n 0 1
+  let rec aux n a b =
+    if n = 0 then a
+    else aux (n-1) b (a+b)
+  in if n <= 0
+  then 0
+  else aux n 0 1
 
 let sinappx (n: int) (x : float) : float =
   let rec aux i curr acc =
@@ -44,9 +42,11 @@ let sinappx (n: int) (x : float) : float =
   else aux 1 x x
 
 let rec repeat (c: char) (n: int) : char list =
-  match n with
-  | 0 -> []
-  | n -> c :: repeat c (n-1)
+  let rec aux n acc =
+    if n <= 0
+    then acc
+    else aux (n-1) (c::acc)
+  in aux n []
 
 let rec run_length_encode (l : char list) : (char * int) list =
   let rec aux curr_letter count list acc =
@@ -80,11 +80,13 @@ let () =
   assert (sumsq 5 = 55);
 
   assert (sumOdd 1 = 1);
-  assert (sumOdd 5 = 9);
+  assert (sumOdd 5 = 25);
+  assert (sumOdd 10 = 100);
 
   assert (fibFast 0 = 0);
   assert (fibFast 1 = 1);
   assert (fibFast 10 = 55);
+  assert (fibFast 30 = 832040);
 
   (*
   Printf.printf "sinappx(n=1, x=0) should be 0, and yields %f\n" (sinappx 1 0.);
