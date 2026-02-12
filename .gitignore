@@ -1,3 +1,9 @@
+# dont want a build folder so ignore any files that dont have extensions
+*
+!*/
+!*.*
+
+
 *.annot
 *.cmo
 *.cma
