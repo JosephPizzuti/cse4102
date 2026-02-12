@@ -16,7 +16,7 @@ let rec sumsq (n: int) : int =
 let rec sumOdd (n: int) : int =
   match n with
   | 1 -> 1
-  | n -> if (n mod 2 = 0) then (sumOdd (n-1)) else n + (sumOdd (n-1))
+  | n -> ((n*2)-1) + sumOdd (n-1)
 
 let rec fib (n: int) : int =
   if n <= 1 then 1
