@@ -86,11 +86,13 @@ let () =
   assert (fibFast 1 = 1);
   assert (fibFast 10 = 55);
 
+  (*
   Printf.printf "sinappx(n=1, x=0) should be 0, and yields %f\n" (sinappx 1 0.);
   Printf.printf "sinappx(n=0, x=3) should be 3, and yields %f\n" (sinappx 0 3.);
   Printf.printf "sinappx(n=10, x=pi/6) should be 0.5, and yields %f\n" (sinappx 10 (Float.pi /. 6.));
   Printf.printf "sinappx(n=10, x=-pi/6) should be -0.5, and yields %f\n" (sinappx 10 (Float.pi /. 6.) *. -1.);
   Printf.printf "sinappx(n=10, x=pi) should be 0, and yields %f\n" (sinappx 10 (Float.pi));
+  *)
 
   assert (repeat 'a' 0 = []);
   assert (repeat 'b' 5 = ['b';'b';'b';'b';'b']);

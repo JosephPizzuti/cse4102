@@ -54,7 +54,19 @@ let rec print_moves start l =
 (* Produce a list of moves to move n rings from from_peg to to_peg *)
 (* Assumes the current state is valid. *)
 let rec hanoi_general n from_peg to_peg other_peg : (int * int) list  =
-  raise Util.Unimplemented
+  match n with
+  | 0 -> []
+  | n ->
+      (* using a 2 disc example, we think through it like this; towers of hanoi is a 3 step process where we need to move
+         1. the smaller discs onto the second peg (so moving our first disc onto the second peg)
+         2. the largest, bottom disc onto the third peg (moving the second disc onto the third peg)
+         3. the smaller discs onto the larger peg (moving the first disc back onto the second disc)
+         recursion will do the rest so long as we stick to the principle of this solution and document our work w/ making tuples and combining moves*)
+  let peg1_peg2 = hanoi_general (n-1) from_peg other_peg to_peg in
+  let peg1_peg3 = [(from_peg, to_peg)] in
+  let peg2_peg3 = hanoi_general (n-1) other_peg to_peg from_peg in
+  peg1_peg2 @ peg1_peg3 @ peg2_peg3
+
 
 let hanoi n =
   hanoi_general n 1 3 2
