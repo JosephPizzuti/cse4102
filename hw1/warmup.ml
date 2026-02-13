@@ -27,7 +27,7 @@ let fibFast n =
   let rec aux iter curr next =
     if iter = 0 then curr
     else aux (iter-1) next (curr+next)
-  in if n <= 0
+  in if n < 0
   then 0
   else aux n 1 1
 
@@ -86,11 +86,11 @@ let () =
   assert (sumOdd 5 = 25);
   assert (sumOdd 10 = 100);
 
-  assert (fibFast 0 = 0);
+  assert (fibFast 0 = 1);
   assert (fibFast 1 = 1);
-  assert (fibFast 2 = 1);
-  assert (fibFast 3 = 2);
-  assert (fibFast 10 = 55);
+  assert (fibFast 2 = 2);
+  assert (fibFast 3 = 3);
+  assert (fibFast 4 = 5);
 
   (*
   Printf.printf "sinappx(n=1, x=0) should be 0, and yields %f\n" (sinappx 1 0.);
