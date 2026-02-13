@@ -15,6 +15,7 @@ let rec sumsq (n: int) : int =
 
 let rec sumOdd (n: int) : int =
   match n with
+  | _ when n < 0 -> 0
   | 1 -> 1
   | n -> ((n*2)-1) + sumOdd (n-1)
 
