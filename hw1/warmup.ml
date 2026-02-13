@@ -25,7 +25,7 @@ let rec fib (n: int) : int =
 
 let fibFast n =
   let rec aux iter curr next =
-    if iter = 1 then curr
+    if iter = 0 then curr
     else aux (iter-1) next (curr+next)
   in if n <= 0
   then 0
