@@ -88,7 +88,7 @@ let () =
   assert (fibFast 1 = 1);
   assert (fibFast 2 = 1);
   assert (fibFast 3 = 2);
-  assert (fibFast 10 = 45);
+  assert (fibFast 10 = 55);
 
   (*
   Printf.printf "sinappx(n=1, x=0) should be 0, and yields %f\n" (sinappx 1 0.);
