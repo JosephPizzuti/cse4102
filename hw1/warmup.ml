@@ -80,6 +80,8 @@ let () =
   assert (sumsq 0 = 0);
   assert (sumsq 5 = 55);
 
+  assert (sumOdd (-1) = 0);
+  assert (sumOdd 0 = 0);
   assert (sumOdd 1 = 1);
   assert (sumOdd 5 = 25);
   assert (sumOdd 10 = 100);
