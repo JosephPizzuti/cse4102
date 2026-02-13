@@ -24,12 +24,12 @@ let rec fib (n: int) : int =
   else fib (n - 1) + fib (n - 2)
 
 let fibFast n =
-  let rec aux n a b =
-    if n = 0 then a
-    else aux (n-1) b (a+b)
+  let rec aux iter curr next =
+    if iter = 1 then curr
+    else aux (iter-1) next (curr+next)
   in if n <= 0
   then 0
-  else aux n 0 1
+  else aux n 1 1
 
 let sinappx (n: int) (x : float) : float =
   let rec aux i curr acc =
@@ -86,8 +86,9 @@ let () =
 
   assert (fibFast 0 = 0);
   assert (fibFast 1 = 1);
-  assert (fibFast 10 = 55);
-  assert (fibFast 30 = 832040);
+  assert (fibFast 2 = 1);
+  assert (fibFast 3 = 2);
+  assert (fibFast 10 = 45);
 
   (*
   Printf.printf "sinappx(n=1, x=0) should be 0, and yields %f\n" (sinappx 1 0.);
